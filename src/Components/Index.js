@@ -8,35 +8,45 @@ import {
   ResourcesDirective,
   ResourceDirective,
   Inject,
+  Resize,
+  DragAndDrop
 } from "@syncfusion/ej2-react-schedule";
 
     const Index = () => {
-    const data = ([
+    const data = [
       {
         Id: 1,
         Subject: "Wheel of Reunification",
         StartTime: new Date(2022, 0, 15, 9, 30),
         EndTime: new Date(2022, 0, 15, 11, 0),
+        RoomId: 1,
+        OwnerId: 1
       },
       {
         Id: 2,
         Subject: "Headlight Restoration",
         StartTime: new Date(2022, 0, 12, 12, 0),
         EndTime: new Date(2022, 0, 12, 14, 0),
+        RoomId: 2,
+        OwnerId: 2
       },
       {
         Id: 3,
         Subject: "Horn restoration",
         StartTime: new Date(2022, 0, 13, 9, 30),
         EndTime: new Date(2022, 0, 13, 11, 0),
+        RoomId: 3,
+        OwnerId: 3
       },
       {
         Id: 4,
         Subject: "Engine Repair",
         StartTime: new Date(2022, 0, 14, 13, 0),
         EndTime: new Date(2022, 0, 14, 14, 30),
+        RoomId: 4,
+        OwnerId: 4
       },
-    ]);
+    ];
       const roomData = [
         { RoomText: "Convertible", Id: 1, RoomColor: "#cb6bb2" },
         { RoomText: "SUV", Id: 2, RoomColor: "#56ca85" },
@@ -58,7 +68,7 @@ import {
         currentView="TimelineMonth"
         selectedDate={new Date()}
         eventSettings={{ dataSource: data }}
-        group={{ resources: ["Rooms", "Owners"] }}
+        group={{ resources: ["Rooms", "Owners"],enableCompactView: true }}
         
       >
         <ViewsDirective>
@@ -87,7 +97,7 @@ import {
             colorField="OwnerColor"
           ></ResourceDirective>
         </ResourcesDirective>
-        <Inject services={[TimelineViews, TimelineMonth]} />
+        <Inject services={[TimelineViews, TimelineMonth, Resize,DragAndDrop]} />
       </ScheduleComponent>
     );
     };
